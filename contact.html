@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TechHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TechHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="contact-section">
+            <h1>Contact Us</h1>
+            
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info-box">
+                    <h2>Get In Touch</h2>
+                    
+                    <div class="contact-item">
+                        <h3>📍 Address</h3>
+                        <p>
+                            TechHub Headquarters<br>
+                            123 Technology Lane<br>
+                            Silicon Valley, CA 94025<br>
+                            United States
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>📞 Phone</h3>
+                        <p>
+                            Main: +1 (800) 555-0123<br>
+                            Customer Support: +1 (800) 555-0456<br>
+                            Mon - Fri: 9:00 AM - 6:00 PM (PST)
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p>
+                            General Inquiries: <a href="mailto:info@techhub.com">info@techhub.com</a><br>
+                            Customer Support: <a href="mailto:support@techhub.com">support@techhub.com</a><br>
+                            Sales: <a href="mailto:sales@techhub.com">sales@techhub.com</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>🌐 Social Media</h3>
+                        <p>
+                            Facebook: <a href="#" target="_blank">@TechHubOfficial</a><br>
+                            Twitter: <a href="#" target="_blank">@TechHub</a><br>
+                            Instagram: <a href="#" target="_blank">@TechHub_Tech</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-box">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product">Related Product (Optional)</label>
+                            <select id="product" name="product">
+                                <option value="">Select a product...</option>
+                                <option value="1">Premium Wireless Headphones</option>
+                                <option value="2">High-Speed USB-C Cable</option>
+                                <option value="3">Portable Bluetooth Speaker</option>
+                                <option value="4">20000mAh Power Bank</option>
+                                <option value="5">Tempered Glass Screen Protector</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                    <p id="formMessage" class="form-message"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TechHub. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

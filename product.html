@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - TechHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TechHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="product-detail-container">
+            <!-- Product Images Gallery -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="mainImage" src="" alt="Product Image">
+                </div>
+                <div class="thumbnail-gallery">
+                    <img class="thumbnail" src="" alt="Product 1">
+                    <img class="thumbnail" src="" alt="Product 2">
+                    <img class="thumbnail" src="" alt="Product 3">
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="product-details">
+                <h1 id="productTitle"></h1>
+                
+                <div class="price-section">
+                    <p class="product-price" id="productPrice"></p>
+                    <p class="stock-status" id="stockStatus"></p>
+                </div>
+
+                <p class="product-description" id="productDescription"></p>
+
+                <!-- Product Information Table -->
+                <div class="product-info-table">
+                    <h3>Product Information</h3>
+                    <table>
+                        <tr>
+                            <td class="label">Weight:</td>
+                            <td id="weight"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Dimensions:</td>
+                            <td id="dimensions"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Barcode:</td>
+                            <td id="barcode"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">SKU:</td>
+                            <td id="sku"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Warranty:</td>
+                            <td id="warranty"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Color:</td>
+                            <td id="color"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Buy Now Button -->
+                <button class="btn-buy-now" id="buyNowBtn">Buy Now</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TechHub. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
