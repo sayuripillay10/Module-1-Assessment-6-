@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGear Pro - Premium Tech Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TechGear Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to TechGear Pro</h1>
+            <p>Discover Premium Technology Products</p>
+        </div>
+    </section>
+
+    <!-- Main Catalogue -->
+    <main class="container">
+        <section class="catalogue">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1: Wireless Headphones -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/headphones.jpg" alt="ProSound Wireless Headphones">
+                    </div>
+                    <div class="product-info">
+                        <h3>ProSound Wireless Headphones</h3>
+                        <p class="price">$129.99</p>
+                        <p class="stock">In Stock</p>
+                        <a href="product.html?id=1" class="btn-view-details">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Smart Watch -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/smartwatch.jpg" alt="TimePulse Smart Watch">
+                    </div>
+                    <div class="product-info">
+                        <h3>TimePulse Smart Watch</h3>
+                        <p class="price">$249.99</p>
+                        <p class="stock">In Stock</p>
+                        <a href="product.html?id=2" class="btn-view-details">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 3: USB-C Cable -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/usb-cable.jpg" alt="FlexCharge Pro USB-C Cable">
+                    </div>
+                    <div class="product-info">
+                        <h3>FlexCharge Pro USB-C Cable</h3>
+                        <p class="price">$19.99</p>
+                        <p class="stock">In Stock</p>
+                        <a href="product.html?id=3" class="btn-view-details">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 4: Wireless Mouse -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/wireless-mouse.jpg" alt="PrecisionGlide Wireless Mouse">
+                    </div>
+                    <div class="product-info">
+                        <h3>PrecisionGlide Wireless Mouse</h3>
+                        <p class="price">$49.99</p>
+                        <p class="stock">In Stock</p>
+                        <a href="product.html?id=4" class="btn-view-details">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 5: Portable Charger -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/portable-charger.jpg" alt="PowerPulse Pro Portable Charger">
+                    </div>
+                    <div class="product-info">
+                        <h3>PowerPulse Pro Portable Charger</h3>
+                        <p class="price">$79.99</p>
+                        <p class="stock">In Stock</p>
+                        <a href="product.html?id=5" class="btn-view-details">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TechGear Pro. All rights reserved.</p>
+    </footer>
+</body>
+</html>
