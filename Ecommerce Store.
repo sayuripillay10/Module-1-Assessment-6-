@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub - Premium Electronics Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Page Sections */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Products Section */
+        .products-section {
+            margin-bottom: 3rem;
+        }
+
+        .products-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn-view {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-view:hover {
+            background-color: #2980b9;
+        }
+
+        /* Product Detail Page */
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-bg);
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--secondary-color);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .product-details h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .price-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .stock-status {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .stock-status.in-stock {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .stock-status.out-of-stock {
+            background-color: #f8d7da;
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .product-info-table {
+            border-top: 1px solid var(--light-bg);
+            padding-top: 1.5rem;
+        }
+
+        .product-info-table h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .product-info-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-info-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .product-info-table .label {
+            font-weight: bold;
+            color: var(--primary-color);
+            width: 30%;
+        }
+
+        .btn-buy-now {
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-buy-now:hover {
+            background-color: #c0392b;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .product-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .product-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .product-list li:before {
+            content: "▸ ";
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-left: -1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            padding: 0.7rem 0;
+            padding-left: 2rem;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .features-list li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-left: -1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-section h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info-box,
+        .contact-form-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-info-box {
+            background-color: var(--light-bg);
+        }
+
+        .contact-info-box h2,
+        .contact-form-box h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .btn-submit {
+            padding: 0.9rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .product-detail-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">TechHub</div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a onclick="showPage('about')" class="nav-link">About</a></li>
+                <li><a onclick="showPage('contact')" class="nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <main class="main-content">
+            <section class="hero">
+                <h1>Welcome to TechHub</h1>
+                <p>Your destination for premium electronics and gadgets</p>
+            </section>
+
+            <section class="products-section">
+                <h2>Our Featured Products</h2>
+                <div class="products-grid" id="productsGrid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- PRODUCT DETAIL PAGE -->
+    <div id="product" class="page">
+        <main class="main-content">
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainImage" src="" alt="Product Image">
+                    </div>
+                    <div class="thumbnail-gallery" id="thumbnailGallery"></div>
+                </div>
+
+                <div class="product-details">
+                    <h1 id="productTitle"></h1>
+                    
+                    <div class="price-section">
+                        <p class="product-price" id="productPrice"></p>
+                        <p class="stock-status" id="stockStatus"></p>
+                    </div>
+
+                    <p class="product-description" id="productDescription"></p>
+
+                    <div class="product-info-table">
+                        <h3>Product Information</h3>
+                        <table>
+                            <tr>
+                                <td class="label">Weight:</td>
+                                <td id="weight"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Dimensions:</td>
+                                <td id="dimensions"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Barcode:</td>
+                                <td id="barcode"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">SKU:</td>
+                                <td id="sku"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Warranty:</td>
+                                <td id="warranty"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Color:</td>
+                                <td id="color"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <button class="btn-buy-now" id="buyNowBtn">Buy Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <main class="main-content">
+            <section class="about-section">
+                <h1>About TechHub</h1>
+                
+                <div class="about-content">
+                    <h2>Who We Are</h2>
+                    <p>
+                        Welcome to TechHub, your premier destination for premium electronics and gadgets. 
+                        Founded in 2020, we have established ourselves as a trusted retailer in the technology 
+                        sector, serving thousands of satisfied customers worldwide.
+                    </p>
+
+                    <h2>Our Mission</h2>
+                    <p>
+                        Our mission is to make cutting-edge technology accessible to everyone. We believe 
+                        that quality electronics should be affordable, and our customers should have access 
+                        to the latest innovations without breaking the bank.
+                    </p>
+
+                    <h2>What We Sell</h2>
+                    <p>
+                        At TechHub, we specialize in a wide range of electronics and accessories, including:
+                    </p>
+                    <ul class="product-list">
+                        <li><strong>Wireless Headphones & Earbuds:</strong> Premium audio equipment from renowned brands</li>
+                        <li><strong>Charging Cables & Adapters:</strong> High-speed USB-C cables and universal chargers</li>
+                        <li><strong>Portable Speakers:</strong> Bluetooth speakers for music lovers on the go</li>
+                        <li><strong>Power Banks:</strong> High-capacity portable charging solutions</li>
+                        <li><strong>Screen Protectors:</strong> Tempered glass and protective films for all devices</li>
+                    </ul>
+
+                    <h2>Why Choose TechHub?</h2>
+                    <ul class="features-list">
+                        <li>✓ Authentic products from verified manufacturers</li>
+                        <li>✓ Competitive pricing and regular discounts</li>
+                        <li>✓ Fast and reliable shipping</li>
+                        <li>✓ 30-day money-back guarantee</li>
+                        <li>✓ Expert customer support team</li>
+                        <li>✓ Secure payment options</li>
+                    </ul>
+
+                    <h2>Our Commitment</h2>
+                    <p>
+                        We are committed to providing exceptional customer service and quality products. 
+                        Every item in our catalog is carefully selected and tested to ensure it meets our 
+                        high standards. Your satisfaction is our priority, and we stand behind every product 
+                        we sell.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <main class="main-content">
+            <section class="contact-section">
+                <h1>Contact Us</h1>
+                
+                <div class="contact-container">
+                    <div class="contact-info-box">
+                        <h2>Get In Touch</h2>
+                        
+                        <div class="contact-item">
+                            <h3>📍 Address</h3>
+                            <p>
+                                TechHub Headquarters<br>
+                                123 Technology Lane<br>
+                                Silicon Valley, CA 94025<br>
+                                United States
+                            </p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3>📞 Phone</h3>
+                            <p>
+                                Main: +1 (800) 555-0123<br>
+                                Customer Support: +1 (800) 555-0456<br>
+                                Mon - Fri: 9:00 AM - 6:00 PM (PST)
+                            </p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3>📧 Email</h3>
+                            <p>
+                                General Inquiries: <a href="mailto:info@techhub.com">info@techhub.com</a><br>
+                                Customer Support: <a href="mailto:support@techhub.com">support@techhub.com</a><br>
+                                Sales: <a href="mailto:sales@techhub.com">sales@techhub.com</a>
+                            </p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3>🌐 Social Media</h3>
+                            <p>
+                                Facebook: <a href="#" target="_blank">@TechHubOfficial</a><br>
+                                Twitter: <a href="#" target="_blank">@TechHub</a><br>
+                                Instagram: <a href="#" target="_blank">@TechHub_Tech</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-box">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product">Related Product (Optional)</label>
+                                <select id="product" name="product">
+                                    <option value="">Select a product...</option>
+                                    <option value="1">Premium Wireless Headphones</option>
+                                    <option value="2">High-Speed USB-C Cable</option>
+                                    <option value="3">Portable Bluetooth Speaker</option>
+                                    <option value="4">20000mAh Power Bank</option>
+                                    <option value="5">Tempered Glass Screen Protector</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </form>
+                        <p id="formMessage" class="form-message"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TechHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = {
+            1: {
+                id: 1,
+                title: "Premium Wireless Headphones",
+                price: 129.99,
+                stock: 15,
+                description: "Experience exceptional sound quality with our premium wireless headphones. Featuring active noise cancellation, 30-hour battery life, and premium comfort for extended listening sessions. Perfect for music lovers and professionals who demand the best audio experience.",
+                images: [
+                    "https://via.placeholder.com/400x400?text=Wireless+Headphones+1",
+                    "https://via.placeholder.com/400x400?text=Wireless+Headphones+2",
+                    "https://via.placeholder.com/400x400?text=Wireless+Headphones+3"
+                ],
+                weight: "250g",
+                dimensions: "20cm x 18cm x 8cm",
+                barcode: "8719325461829",
+                sku: "WH-PREM-001",
+                warranty: "2 Years",
+                color: "Black, Silver, Gold"
+            },
+            2: {
+                id: 2,
+                title: "High-Speed USB-C Cable",
+                price: 19.99,
+                stock: 50,
+                description: "Premium USB-C cable with ultra-fast data transfer speeds up to 480Mbps and high-power charging capability of 100W. Durable braided nylon construction ensures longevity and reliability. Compatible with all USB-C devices including smartphones, tablets, and laptops.",
+                images: [
+                    "https://via.placeholder.com/400x400?text=USB-C+Cable+1",
+                    "https://via.placeholder.com/400x400?text=USB-C+Cable+2",
+                    "https://via.placeholder.com/400x400?text=USB-C+Cable+3"
+                ],
+                weight: "50g",
+                dimensions: "200cm (length)",
+                barcode: "5901234123457",
+                sku: "CABLE-USB-C-2M",
+                warranty: "1 Year",
+                color: "Black"
+            },
+            3: {
+                id: 3,
+                title: "Portable Bluetooth Speaker",
+                price: 79.99,
+                stock: 22,
+                description: "Compact and powerful portable Bluetooth speaker with 360-degree sound. Features waterproof design (IPX7), 12-hour battery life, and deep bass technology. Perfect for outdoor adventures, beach trips, and gatherings. Lightweight and easy to carry.",
+                images: [
+                    "https://via.placeholder.com/400x400?text=Bluetooth+Speaker+1",
+                    "https://via.placeholder.com/400x400?text=Bluetooth+Speaker+2",
+                    "https://via.placeholder.com/400x400?text=Bluetooth+Speaker+3"
+                ],
+                weight: "420g",
+                dimensions: "15cm x 7cm x 7cm",
+                barcode: "7891234567890",
+                sku: "SPKR-BT-PORT-001",
+                warranty: "1 Year",
+                color: "Black, Blue, Red"
+            },
+            4: {
+                id: 4,
+                title: "20000mAh Power Bank",
+                price: 49.99,
+                stock: 35,
+                description: "High-capacity 20000mAh power bank with dual USB and USB-C ports for simultaneous charging of multiple devices. Features fast-charging technology, LED display showing remaining battery percentage, and compact design. Ideal for travelers and professionals.",
+                images: [
+                    "https://via.placeholder.com/400x400?text=Power+Bank+1",
+                    "https://via.placeholder.com/400x400?text=Power+Bank+2",
+                    "https://via.placeholder.com/400x400?text=Power+Bank+3"
+                ],
+                weight: "370g",
+                dimensions: "16cm x 8cm x 2cm",
+                barcode: "9876543210123",
+                sku: "PB-20000-DUAL",
+                warranty: "18 Months",
+                color: "Black, White, Blue"
+            },
+            5: {
+                id: 5,
+                title: "Tempered Glass Screen Protector",
+                price: 9.99,
+                stock: 100,
+                description: "Ultra-thin tempered glass screen protector offering maximum clarity and protection. 99.9% transparency maintains original display quality while protecting against scratches and minor impacts. Easy bubble-free installation with precise cutouts for all phone models.",
+                images: [
+                    "https://via.placeholder.com/400x400?text=Screen+Protector+1",
+                    "https://via.placeholder.com/400x400?text=Screen+Protector+2",
+                    "https://via.placeholder.com/400x400?text=Screen+Protector+3"
+                ],
+                weight: "5g",
+                dimensions: "15cm x 7cm",
+                barcode: "4567890123456",
+                sku: "SCRN-PROT-TEMPER",
+                warranty: "Lifetime",
+                color: "Clear"
+            }
+        };
+
+        // Show/Hide Pages
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (pageId === 'home') {
+                loadProducts();
+            }
+        }
+
+        // Load Products on Home Page
+        function loadProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+
+            for (let id in products) {
+                const product = products[id];
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.images[0]}" alt="${product.title}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                        <p class="price">$${product.price.toFixed(2)}</p>
+                        <a class="btn-view" onclick="showProductDetail(${id})">View Details</a>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            }
+        }
+
+        // Show Product Detail
+        function showProductDetail(productId) {
+            const product = products[productId];
+            
+            document.getElementById('mainImage').src = product.images[0];
+            document.getElementById('productTitle').textContent = product.title;
+            document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('productDescription').textContent = product.description;
+
+            // Stock status
+            const stockStatus = document.getElementById('stockStatus');
+            if (product.stock > 0) {
+                stockStatus.textContent = `✓ In Stock (${product.stock} items available)`;
+                stockStatus.className = 'stock-status in-stock';
+            } else {
+                stockStatus.textContent = '✗ Out of Stock';
+                stockStatus.className = 'stock-status out-of-stock';
+            }
+
+            // Product information
+            document.getElementById('weight').textContent = product.weight;
+            document.getElementById('dimensions').textContent = product.dimensions;
+            document.getElementById('barcode').textContent = product.barcode;
+            document.getElementById('sku').textContent = product.sku;
+            document.getElementById('warranty').textContent = product.warranty;
+            document.getElementById('color').textContent = product.color;
+
+            // Thumbnails
+            const thumbnailGallery = document.getElementById('thumbnailGallery');
+            thumbnailGallery.innerHTML = '';
+            product.images.forEach((img, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = img;
+                thumb.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                thumb.alt = `${product.title} - Image ${index + 1}`;
+                thumb.onclick = () => {
+                    document.getElementById('mainImage').src = img;
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                };
+                thumbnailGallery.appendChild(thumb);
+            });
+
+            // Buy Now button
+            const buyNowBtn = document.getElementById('buyNowBtn');
+            if (product.stock === 0) {
+                buyNowBtn.disabled = true;
+                buyNowBtn.textContent = 'Out of Stock';
+                buyNowBtn.style.opacity = '0.5';
+                buyNowBtn.style.cursor = 'not-allowed';
+            } else {
+                buyNowBtn.disabled = false;
+                buyNowBtn.textContent = 'Buy Now';
+                buyNowBtn.style.opacity = '1';
+                buyNowBtn.style.cursor = 'pointer';
+                buyNowBtn.onclick = () => {
+                    alert(`Added "${product.title}" to cart!\n\nPrice: $${product.price.toFixed(2)}\n\nProceeding to checkout...`);
+                };
+            }
+
+            // Show product page
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById('product').classList.add('active');
+
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+        }
+
+        // Handle Contact Form
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    const product = document.getElementById('product').value;
+
+                    if (!name || !email || !subject || !message) {
+                        showFormMessage('Please fill in all required fields.', 'error');
+                        return;
+                    }
+
+                    const formMessage = document.getElementById('formMessage');
+                    formMessage.textContent = `Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} soon.`;
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+
+                    console.log('Form Data:', {
+                        name,
+                        email,
+                        subject,
+                        message,
+                        product: product ? `Product ID: ${product}` : 'No product selected',
+                        timestamp: new Date().toLocaleString()
+                    });
+
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        formMessage.classList.remove('success');
+                    }, 5000);
+                });
+            }
+        });
+
+        function showFormMessage(message, type) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = message;
+            formMessage.classList.remove('error', 'success');
+            formMessage.classList.add(type);
+        }
+    </script>
+</body>
+</html>
